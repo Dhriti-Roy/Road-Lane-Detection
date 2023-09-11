@@ -12,25 +12,25 @@ conditions. Visualizing the detected lanes accurately on the original video fram
 validate the algorithm’s effectiveness.
 
 ## Requirements:
-
-Python 3.x
-OpenCV (pip install opencv-python)
+   - Python 3.x
+   - OpenCV (`pip install opencv-python`)
 
 ## Code Explanation:
-display_lines(img, lines, line_length_factor=0.5):
-This function draws detected lane lines on an image.
-canny(img):
-Performs edge detection on the input image.
-region_of_interest(canny):
-Masks the region of interest (ROI) on the edge-detected image.
-houghLines(cropped_canny):
-Applies Hough Transform to detect lines in the ROI.
-addWeighted(frame, line_image):
-Combines the original frame with the line image.
-make_points(image, line):
-Calculates the coordinates of the endpoints of a lane line.
-average_slope_intercept(image, lines):
-Calculates the averaged lane lines.
+   - `display_lines(img, lines, line_length_factor=0.5)`:  
+     This function draws detected lane lines on an image.
+   - `canny(img)`:  
+     Performs edge detection on the input image.
+   - `region_of_interest(canny)`:  
+     Masks the region of interest (ROI) on the edge-detected image.
+   - `houghLines(cropped_canny)`:  
+     Applies Hough Transform to detect lines in the ROI.
+   - `addWeighted(frame, line_image)`:  
+     Combines the original frame with the line image.
+   - `make_points(image, line)`:  
+     Calculates the coordinates of the endpoints of a lane line.
+   - `average_slope_intercept(image, lines)`:  
+     Calculates the averaged lane lines.
+
 
 ## Main loop:
 
@@ -40,8 +40,10 @@ Defines a region of interest.
 Detects lines within the ROI.
 Averages and draws the lines on the frame.
 Displays the result.
+
 Running the Script:
-<img width="399" alt="image" src="https://github.com/Dhriti-Roy/Road-Lane-Detection/assets/74097309/23769208-1995-48f1-8d7f-e136bbf583ff">
+`python lane_detection.py`
+
 
 Ensure you have a video file named "test5.mp4" in the same directory as the script or modify the cv2.VideoCapture argument to the path of your desired video file.
 Exiting the Script:
