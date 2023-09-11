@@ -11,24 +11,58 @@ reduction methods and considering adaptive thresholds for varying lighting
 conditions. Visualizing the detected lanes accurately on the original video frames to
 validate the algorithm’s effectiveness.
 
-## Working
-let’s take the single image frame below :
-<img width="407" alt="image" src="https://github.com/Dhriti-Roy/Road-Lane-Detection/assets/74097309/f969043a-6609-4e30-8860-d73d245ee969">
-In the above image, the lane markers are obvious to any human observer. We
-perform processing of this image intuitively, and after being trained to drive a
-human can detect the lane in which the vehicle appears to be moving. Humans also
-effortlessly identify many other objects in the scene, such as the other vehicles, the
-embankment near the right shoulder, some road signs alongside the road, and even
-the mountains visible on the horizon. While many of these objects are complex in
-visual structure, it could be said that the lane markers are actually some of the
-simplest structures in the image!
-Pre-existing knowledge of driving gives us certain assumptions about the properties
-and structure of a lane, further simplifying the problem. One obvious assumption is
-that the lane is oriented to be parallel with the direction of movement. This being the
-case, the lines denoting the lane will tend to extend from the foreground of an image
-into the background along paths that are angled slightly inwards.
+## Requirements:
 
-### CROPPING TO A REGION OF INTEREST
-#### LOADING AN IMAGE INTO MEMORY
-#### Defining the Region of Interest
-#### DETECTING EDGES IN THE CROPPED IMAGE
+Python 3.x
+OpenCV (pip install opencv-python)
+
+## Code Explanation:
+display_lines(img, lines, line_length_factor=0.5):
+This function draws detected lane lines on an image.
+canny(img):
+Performs edge detection on the input image.
+region_of_interest(canny):
+Masks the region of interest (ROI) on the edge-detected image.
+houghLines(cropped_canny):
+Applies Hough Transform to detect lines in the ROI.
+addWeighted(frame, line_image):
+Combines the original frame with the line image.
+make_points(image, line):
+Calculates the coordinates of the endpoints of a lane line.
+average_slope_intercept(image, lines):
+Calculates the averaged lane lines.
+
+## Main loop:
+
+Reads frames from a video file.
+Applies edge detection.
+Defines a region of interest.
+Detects lines within the ROI.
+Averages and draws the lines on the frame.
+Displays the result.
+Running the Script:
+<img width="399" alt="image" src="https://github.com/Dhriti-Roy/Road-Lane-Detection/assets/74097309/23769208-1995-48f1-8d7f-e136bbf583ff">
+
+Ensure you have a video file named "test5.mp4" in the same directory as the script or modify the cv2.VideoCapture argument to the path of your desired video file.
+Exiting the Script:
+
+Press q on the keyboard to exit the video window.
+
+## Customization
+You can adjust parameters like threshold, minLineLength, and maxLineGap in the houghLines function for fine-tuning the lane detection.
+
+The region of interest can be modified in the region_of_interest function by changing the vertices of the triangle array.
+
+## Example Output
+The script will open a video window showing the original video with detected lane lines highlighted in red.
+<img width="858" alt="image" src="https://github.com/Dhriti-Roy/Road-Lane-Detection/assets/74097309/f5d6e153-509f-4861-8cc7-b47408cabf92">
+
+
+## Additional Notes
+The accuracy of lane detection may vary depending on lighting conditions, road markings, and camera placement.
+
+For optimal results, ensure the video feed contains clear and distinct lane markings.
+
+
+
+
