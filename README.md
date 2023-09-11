@@ -56,7 +56,7 @@ You can adjust parameters like threshold, minLineLength, and maxLineGap in the h
 The region of interest can be modified in the region_of_interest function by changing the vertices of the triangle array.
 
 ## Example Output
-The script will open a video window showing the original video with detected lane lines highlighted in red.
+It will open a video window showing the original video with detected lane lines highlighted in red.
 <img width="858" alt="image" src="https://github.com/Dhriti-Roy/Road-Lane-Detection/assets/74097309/f5d6e153-509f-4861-8cc7-b47408cabf92">
 
 
